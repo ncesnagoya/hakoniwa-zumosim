@@ -1,5 +1,5 @@
 # CMake build directory
-/cmake-build/
+workspace/cmake-build/
 # Prerequisites
 *.d
 
