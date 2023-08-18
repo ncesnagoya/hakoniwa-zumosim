@@ -24,3 +24,5 @@ RUN apt-get install -y \
 
 RUN mkdir /root/workspace
 WORKDIR /root/workspace
+
+CMD [ "/root/workspace/build.bash" ]

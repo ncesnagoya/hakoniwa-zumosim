@@ -24,3 +24,7 @@ else
     docker build -t ${DOCKER_IMAGE} -f ${DOCKER_FILE} .
 fi
 
+if [ $TYPE = "dev" ]
+then
+    chmod +x workspace/build.bash
+fi
