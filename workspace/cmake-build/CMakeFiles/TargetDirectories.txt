@@ -1,0 +1,7 @@
+/root/workspace/cmake-build/CMakeFiles/rebuild_cache.dir
+/root/workspace/cmake-build/CMakeFiles/edit_cache.dir
+/root/workspace/cmake-build/CMakeFiles/test.dir
+/root/workspace/cmake-build/src/zumo/CMakeFiles/rebuild_cache.dir
+/root/workspace/cmake-build/src/zumo/CMakeFiles/edit_cache.dir
+/root/workspace/cmake-build/src/zumo/CMakeFiles/test.dir
+/root/workspace/cmake-build/src/zumo/CMakeFiles/zumosim.dir

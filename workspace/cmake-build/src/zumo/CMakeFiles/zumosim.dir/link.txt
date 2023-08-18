@@ -1,0 +1,2 @@
+/usr/bin/ar qc libzumosim.a  CMakeFiles/zumosim.dir/actuator/zumo_led.cpp.o CMakeFiles/zumosim.dir/actuator/zumo_motor.cpp.o CMakeFiles/zumosim.dir/sensor/zumo_imu.cpp.o CMakeFiles/zumosim.dir/sensor/zumo_ir.cpp.o CMakeFiles/zumosim.dir/sensor/zumo_lf.cpp.o
+/usr/bin/ranlib libzumosim.a
