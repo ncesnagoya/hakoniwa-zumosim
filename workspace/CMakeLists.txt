@@ -10,6 +10,8 @@ project(hakoniwa-suzmosim
 enable_testing()
 
 set(HAKO_ZUMO_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/zumo")
+set(HAKO_CPP_SOURCE_DIR "/root/hakoniwa-core-cpp-client")
+set(HAKO_CPP_LIBDIR "/usr/local/lib/hakoniwa")
 
 if (DEFINED HAKO_CLIENT_OPTION_FILEPATH)
     include(${HAKO_CLIENT_OPTION_FILEPATH})
@@ -21,3 +23,4 @@ message(STATUS "BUILD_TYPE" ${BUILD_TYPE})
 message(STATUS "GCOV" ${GCOV})
 
 add_subdirectory(src/zumo)
+add_subdirectory(src/runner)

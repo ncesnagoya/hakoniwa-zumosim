@@ -1,6 +1,6 @@
 set(HAKO_CMAKE_VERSION ${HAKO_CMAKE_VERSION})
 
-project(hakoniwa-core
+project(hakoniwa-zumo
     LANGUAGES C CXX
 )
 
