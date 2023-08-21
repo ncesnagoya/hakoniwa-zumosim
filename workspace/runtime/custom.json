@@ -1,0 +1,74 @@
+{
+  "robots": [
+    {
+      "name": "EV3TrainModelWithBaggage",
+      "shm_proxy": {
+        "name": "Athrill",
+        "class_name": "Hakoniwa.PluggableAsset.Assets.Micon.EV3.Ev3MiconAssetController"
+      },
+      "shm_pdu_readers": [
+        {
+          "type": "ev3_msgs/Ev3PduActuator",
+          "org_name": "ev3_actuator",
+          "name": "EV3TrainModelWithBaggage_ev3_actuator",
+          "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReader",
+          "class_path": null,
+          "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReaderConverter",
+          "conv_class_path": null,
+          "channel_id": 0,
+          "pdu_size": 196
+        }
+      ],
+      "shm_pdu_writers": [
+        {
+          "type": "ev3_msgs/Ev3PduSensor",
+          "org_name": "ev3_sensor",
+          "name": "EV3TrainModelWithBaggage_ev3_sensor",
+          "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter",
+          "class_path": "",
+          "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter",
+          "conv_class_path": "",
+          "write_cycle": 1,
+          "channel_id": 1,
+          "pdu_size": 248,
+          "method_type": "SHM"
+        }
+      ]
+    },
+    {
+      "name": "EV3CrossingGateModel",
+      "shm_proxy": {
+        "name": "Athrill",
+        "class_name": "Hakoniwa.PluggableAsset.Assets.Micon.EV3.Ev3MiconAssetController"
+      },
+      "shm_pdu_readers": [
+        {
+          "type": "ev3_msgs/Ev3PduActuator",
+          "org_name": "ev3_actuator",
+          "name": "EV3CrossingGateModel_ev3_actuator",
+          "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReader",
+          "class_path": null,
+          "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReaderConverter",
+          "conv_class_path": null,
+          "channel_id": 0,
+          "pdu_size": 196
+        }
+      ],
+      "shm_pdu_writers": [
+        {
+          "type": "ev3_msgs/Ev3PduSensor",
+          "org_name": "ev3_sensor",
+          "name": "EV3CrossingGateModel_ev3_sensor",
+          "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter",
+          "class_path": "",
+          "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter",
+          "conv_class_path": "",
+          "write_cycle": 1,
+          "channel_id": 1,
+          "pdu_size": 248,
+          "method_type": "SHM"
+        }
+      ]
+    }
+  ]
+}

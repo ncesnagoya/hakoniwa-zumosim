@@ -10,12 +10,14 @@ static hako_asset_runner_callback_t my_callbacks = {
 
 int main(int argc, const char* argv[])
 {
-    if (argc != 3) {
-        std::cerr << "Usage: " << *argv[0] <<  " <asset_name> <config.json> <delta_time_msec>" << std::endl;
+    if (argc != 4) {
+        std::cerr << "Usage: " << argv[0] <<  " <asset_name> <config path> <delta_time_msec>" << std::endl;
         return 1;
     }
-
-    if (hako_asset_runner_init("sample", "./config.json", 1000*10) == false) {
+    std::cout << "asset_name = " << argv[1] << std::endl;
+    std::cout << "config path = " << argv[2] << std::endl;
+    std::cout << "delta_time_msec = " << atoi(argv[3]) << std::endl;
+    if (hako_asset_runner_init(argv[1], argv[2], atoi(argv[3]) * 1000) == false) {
         std::cerr << "ERROR: " << "hako_asset_runner_init() error" << std::endl;
         return 1;
     }
