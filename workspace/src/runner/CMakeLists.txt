@@ -15,7 +15,7 @@ add_executable(
     zumosim-runner
     zumosim_runner.cpp
 )
-target_link_libraries(zumosim-runner PRIVATE hakoarun hako pthread)
+target_link_libraries(zumosim-runner PRIVATE zumosim hakoarun hako pthread)
 target_link_directories(zumosim-runner PRIVATE ${HAKO_CPP_LIBDIR})
 
 target_include_directories(

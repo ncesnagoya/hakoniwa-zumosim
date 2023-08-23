@@ -12,6 +12,7 @@ MESSAGE(STATUS "OS_TYPE=" ${OS_TYPE})
 
 add_library(
     zumosim STATIC
+    zumosim.cpp
     actuator/zumo_led.cpp
     actuator/zumo_motor.cpp
     sensor/zumo_imu.cpp
@@ -23,6 +24,9 @@ target_include_directories(
     zumosim
     PRIVATE /usr/local/include
     PRIVATE /mingw64/include
+    PRIVATE ${HAKO_ZUMO_SOURCE_DIR}/actuator
+    PRIVATE ${HAKO_ZUMO_SOURCE_DIR}/sensor
     PRIVATE ${HAKO_ZUMO_SOURCE_DIR}/include
+    PRIVATE ${HAKO_CPP_SOURCE_DIR}/src/hakoc/src
 )
 
