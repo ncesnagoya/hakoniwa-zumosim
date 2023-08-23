@@ -10,7 +10,12 @@ project(hakoniwa-suzmosim
 enable_testing()
 
 set(HAKO_ZUMO_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/zumo")
-set(HAKO_CPP_SOURCE_DIR "/root/hakoniwa-core-cpp-client")
+if (DEFINED HAKO_CPP_SOURCE_DIR)
+    message(STATUS "HAKO_CPP_SOURCE_DIR" ${HAKO_CPP_SOURCE_DIR})
+else()
+    set(HAKO_CPP_SOURCE_DIR "/root/hakoniwa-core-cpp-client")
+endif()
+
 set(HAKO_CPP_LIBDIR "/usr/local/lib/hakoniwa")
 
 if (DEFINED HAKO_CLIENT_OPTION_FILEPATH)
