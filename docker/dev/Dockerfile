@@ -42,6 +42,7 @@ RUN mkdir /usr/local/lib/hakoniwa
 RUN mkdir /usr/local/bin/hakoniwa
 
 ENV PYTHONPATH="/usr/local/lib/hakoniwa:$PYTHONPATH"
+RUN apt-get update
 WORKDIR /root
 RUN apt-get update
 RUN git clone --recursive https://github.com/toppers/hakoniwa-core-cpp-client.git

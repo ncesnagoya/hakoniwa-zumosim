@@ -57,8 +57,8 @@ RUN pip3 install pyquaternion
 RUN pip3 install scipy
 
 ENV PYTHONPATH="/usr/local/lib/hakoniwa:$PYTHONPATH"
-RUN apt-get update
 WORKDIR /root
+RUN apt-get update
 RUN git clone --recursive https://github.com/toppers/hakoniwa-core-cpp-client.git
 WORKDIR /root/hakoniwa-core-cpp-client
 RUN apt-get install -y python3-pip  libffi-dev python3-dev
@@ -74,7 +74,7 @@ WORKDIR /root
 RUN git clone --recursive https://github.com/toppers/hakoniwa-conductor.git
 WORKDIR /root/hakoniwa-conductor/main
 RUN bash install.bash
-
+RUN cp /usr/local/bin/hakoniwa/hako-master  /usr/local/bin/hakoniwa/hakoniwa-conductor 
 WORKDIR /root/workspace
 
 #CMD [ "/root/workspace/run.bash" ]
