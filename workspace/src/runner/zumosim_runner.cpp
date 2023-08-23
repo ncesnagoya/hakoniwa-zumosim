@@ -15,11 +15,15 @@ int main(int argc, const char* argv[])
         return 1;
     }
     hako_asset_runner_register_callback(&zumosim_callbacks);
-    std::cout << "INFO: start simulation" << std::endl;
     while (true) {
-        if (hako_asset_runner_step(1) == false) {
-            break;
+        std::cout << "INFO: start simulation" << std::endl;
+        while (true) {
+            if (hako_asset_runner_step(1) == false) {
+                break;
+            }
+            //std::cout << "STEP" << std::endl;
         }
+        //リセット発生した場合は最初からやり直す。
     }
     std::cout << "INFO: end simulation" << std::endl;
     hako_asset_runner_fin();    
