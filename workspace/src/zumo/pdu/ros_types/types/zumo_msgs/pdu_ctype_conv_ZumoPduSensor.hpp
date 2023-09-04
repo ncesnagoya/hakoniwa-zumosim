@@ -35,7 +35,7 @@ static inline int hako_convert_pdu2ros_ZumoPduSensor(Hako_ZumoPduSensor &src,  z
     (void)hako_convert_pdu2ros_array_ZumoPduIrSensor<M_ARRAY_SIZE(Hako_ZumoPduSensor, Hako_ZumoPduIrSensor, irs), 2>(
         src.irs, dst.irs);
     //struct array convertor
-    (void)hako_convert_pdu2ros_array_ZumoPduLineSensor<M_ARRAY_SIZE(Hako_ZumoPduSensor, Hako_ZumoPduLineSensor, line_sensors), 1>(
+    (void)hako_convert_pdu2ros_array_ZumoPduLineSensor<M_ARRAY_SIZE(Hako_ZumoPduSensor, Hako_ZumoPduLineSensor, line_sensors), 6>(
         src.line_sensors, dst.line_sensors);
     //struct convert
     hako_convert_pdu2ros_Imu(src.imu, dst.imu);
@@ -77,7 +77,7 @@ static inline int hako_convert_ros2pdu_ZumoPduSensor(zumo_msgs::msg::ZumoPduSens
     (void)hako_convert_ros2pdu_array_ZumoPduIrSensor<2, M_ARRAY_SIZE(Hako_ZumoPduSensor, Hako_ZumoPduIrSensor, irs)>(
         src.irs, dst.irs);
     //struct array convertor
-    (void)hako_convert_ros2pdu_array_ZumoPduLineSensor<1, M_ARRAY_SIZE(Hako_ZumoPduSensor, Hako_ZumoPduLineSensor, line_sensors)>(
+    (void)hako_convert_ros2pdu_array_ZumoPduLineSensor<6, M_ARRAY_SIZE(Hako_ZumoPduSensor, Hako_ZumoPduLineSensor, line_sensors)>(
         src.line_sensors, dst.line_sensors);
     //struct convert
     hako_convert_ros2pdu_Imu(src.imu, dst.imu);

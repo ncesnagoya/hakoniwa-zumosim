@@ -12,7 +12,7 @@
 
 typedef struct {
         Hako_ZumoPduIrSensor irs[2];
-        Hako_ZumoPduLineSensor line_sensors[1];
+        Hako_ZumoPduLineSensor line_sensors[6];
         Hako_Imu    imu;
 } Hako_ZumoPduSensor;
 

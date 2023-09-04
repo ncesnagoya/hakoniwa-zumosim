@@ -6,7 +6,7 @@
     },
     {
       "name": "line_sensors",
-      "type": "ZumoPduLineSensor[1]"
+      "type": "ZumoPduLineSensor[6]"
     },
     {
       "name": "imu",
