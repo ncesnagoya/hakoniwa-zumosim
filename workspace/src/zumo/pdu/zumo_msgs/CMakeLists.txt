@@ -15,6 +15,7 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/ZumoPduSensor.msg"
+  "msg/ZumoPduImu.msg"
   "msg/ZumoPduIrSensor.msg"
   "msg/ZumoPduLineSensor.msg"
 	"msg/ZumoPduLed.msg"
