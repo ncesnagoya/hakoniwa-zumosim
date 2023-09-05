@@ -10,7 +10,7 @@
     },
     {
       "name": "imu",
-      "type": "sensor_msgs/Imu"
+      "type": "ZumoPduImu"
     }
   ]
 }

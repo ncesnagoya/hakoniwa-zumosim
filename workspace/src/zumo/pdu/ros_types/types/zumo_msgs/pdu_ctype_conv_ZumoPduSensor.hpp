@@ -16,11 +16,8 @@
 /*
  * Dependent Convertors
  */
-#include "builtin_interfaces/pdu_ctype_conv_Time.hpp"
-#include "geometry_msgs/pdu_ctype_conv_Quaternion.hpp"
 #include "geometry_msgs/pdu_ctype_conv_Vector3.hpp"
-#include "sensor_msgs/pdu_ctype_conv_Imu.hpp"
-#include "std_msgs/pdu_ctype_conv_Header.hpp"
+#include "zumo_msgs/pdu_ctype_conv_ZumoPduImu.hpp"
 #include "zumo_msgs/pdu_ctype_conv_ZumoPduIrSensor.hpp"
 #include "zumo_msgs/pdu_ctype_conv_ZumoPduLineSensor.hpp"
 
@@ -38,7 +35,7 @@ static inline int hako_convert_pdu2ros_ZumoPduSensor(Hako_ZumoPduSensor &src,  z
     (void)hako_convert_pdu2ros_array_ZumoPduLineSensor<M_ARRAY_SIZE(Hako_ZumoPduSensor, Hako_ZumoPduLineSensor, line_sensors), 6>(
         src.line_sensors, dst.line_sensors);
     //struct convert
-    hako_convert_pdu2ros_Imu(src.imu, dst.imu);
+    hako_convert_pdu2ros_ZumoPduImu(src.imu, dst.imu);
     return 0;
 }
 
@@ -80,7 +77,7 @@ static inline int hako_convert_ros2pdu_ZumoPduSensor(zumo_msgs::msg::ZumoPduSens
     (void)hako_convert_ros2pdu_array_ZumoPduLineSensor<6, M_ARRAY_SIZE(Hako_ZumoPduSensor, Hako_ZumoPduLineSensor, line_sensors)>(
         src.line_sensors, dst.line_sensors);
     //struct convert
-    hako_convert_ros2pdu_Imu(src.imu, dst.imu);
+    hako_convert_ros2pdu_ZumoPduImu(src.imu, dst.imu);
     return 0;
 }
 
