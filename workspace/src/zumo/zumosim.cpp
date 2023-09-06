@@ -1,7 +1,15 @@
-#include "zumosim.hpp"
+#include "runner/zumosim.hpp"
 #include "zumo_sensor.hpp"
 #include "zumo_actuator.hpp"
 #include <iostream>
+
+static void (*zumosim_main_task_body) (void);
+
+void zumosim_register_task(void (*task) (void))
+{
+    zumosim_main_task_body = task;
+}
+
 
 static void zumosim_setup(void)
 {
@@ -10,6 +18,9 @@ static void zumosim_setup(void)
 static void zumosim_do_task(void)
 {
     std::cout << "INFO: ZUMOSIM DO_TASK" << std::endl;
+    if (zumosim_main_task_body != NULL) {
+        zumosim_main_task_body();
+    }
 }
 static void zumosim_reset(void)
 {

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "zumosim.hpp"
+#include "main_task_body.hpp"
 
 int main(int argc, const char* argv[])
 {
@@ -14,6 +15,7 @@ int main(int argc, const char* argv[])
         std::cerr << "ERROR: " << "hako_asset_runner_init() error" << std::endl;
         return 1;
     }
+    zumosim_register_task(apl_main_task_body);
     hako_asset_runner_register_callback(&zumosim_callbacks);
     while (true) {
         std::cout << "INFO: start simulation" << std::endl;

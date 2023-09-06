@@ -8,6 +8,7 @@ extern "C" {
 #include "hako_asset_runner.h"
 
 extern hako_asset_runner_callback_t zumosim_callbacks;
+extern void zumosim_register_task(void (*task) (void));
 
 #ifdef __cplusplus
 }

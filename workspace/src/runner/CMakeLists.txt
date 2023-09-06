@@ -15,14 +15,15 @@ add_executable(
     zumosim-runner
     zumosim_runner.cpp
 )
-target_link_libraries(zumosim-runner PRIVATE zumosim hakoarun hako pthread)
+target_link_libraries(zumosim-runner PRIVATE zumoapl zumosim hakoarun hako pthread)
 target_link_directories(zumosim-runner PRIVATE ${HAKO_CPP_LIBDIR})
 
 target_include_directories(
     zumosim-runner 
     PRIVATE /usr/local/include
     PRIVATE /mingw64/include
-    PRIVATE ${HAKO_ZUMO_SOURCE_DIR}/include
+    PRIVATE ${HAKO_APL_SOURCE_DIR}
+    PRIVATE ${HAKO_ZUMO_SOURCE_DIR}/include/runner
     PRIVATE ${HAKO_CPP_SOURCE_DIR}/src/hakoc/src
 )
 

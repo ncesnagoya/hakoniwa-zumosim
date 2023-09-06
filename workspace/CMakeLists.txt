@@ -10,6 +10,7 @@ project(hakoniwa-suzmosim
 enable_testing()
 
 set(HAKO_ZUMO_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/zumo")
+set(HAKO_APL_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/apl")
 if (DEFINED HAKO_CPP_SOURCE_DIR)
     message(STATUS "HAKO_CPP_SOURCE_DIR" ${HAKO_CPP_SOURCE_DIR})
 else()
@@ -27,5 +28,6 @@ endif()
 message(STATUS "BUILD_TYPE" ${BUILD_TYPE})
 message(STATUS "GCOV" ${GCOV})
 
+add_subdirectory(src/apl)
 add_subdirectory(src/zumo)
 add_subdirectory(src/runner)
