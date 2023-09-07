@@ -19,7 +19,7 @@ static void zumosim_setup(void)
 }
 static void zumosim_do_task(void)
 {
-    std::cout << "INFO: ZUMOSIM DO_TASK" << std::endl;
+    //std::cout << "INFO: ZUMOSIM DO_TASK" << std::endl;
     if (zumosim_main_task_body != NULL) {
         //read pdu
         zumosim_sensor_sync();

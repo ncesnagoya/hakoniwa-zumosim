@@ -2,7 +2,7 @@
 #include "apl/zumosim_api.hpp"
 
 static bool led_status = false;
-#define TASK_CYCLE 300
+#define TASK_CYCLE 100
 void apl_main_task_body(void)
 {
     static int count = 0;
@@ -12,10 +12,12 @@ void apl_main_task_body(void)
     }
     
     if (led_status) {
-        zumosim_led_ctrl(false);
+        led_status = false;
+        zumosim_led_ctrl(led_status);
     }
     else {
-        zumosim_led_ctrl(true);
+        led_status = true;
+        zumosim_led_ctrl(led_status);
     }
 
     return;
