@@ -14,12 +14,19 @@ void zumosim_register_task(void (*task) (void))
 static void zumosim_setup(void)
 {
     std::cout << "INFO: ZUMOSIM SETUP" << std::endl;
+    zumosim_sensor_init();
+    zumosim_actuator_init();
 }
 static void zumosim_do_task(void)
 {
     std::cout << "INFO: ZUMOSIM DO_TASK" << std::endl;
     if (zumosim_main_task_body != NULL) {
+        //read pdu
+        zumosim_sensor_sync();
+        //do task
         zumosim_main_task_body();
+        //write pdu
+        zumosim_actuator_sync();
     }
 }
 static void zumosim_reset(void)

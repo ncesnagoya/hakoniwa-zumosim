@@ -1,0 +1,8 @@
+#ifndef _ZUMOSIM_CONFIG_HPP_
+#define _ZUMOSIM_CONFIG_HPP_
+
+#define ZUMOSIM_ROBO_NAME   "ZumoRoboModel"
+#define ZUMOSIM_CHANNEL_ID_SENSOR       0
+#define ZUMOSIM_CHANNEL_ID_ACTUATOR     1
+
+#endif /* _ZUMOSIM_CONFIG_HPP_ */

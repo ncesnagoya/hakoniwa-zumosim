@@ -10,12 +10,13 @@ void apl_main_task_body(void)
     if ((count % TASK_CYCLE) != 0) {
         return;
     }
-    //TODO
+    
     if (led_status) {
         zumosim_led_ctrl(false);
     }
     else {
         zumosim_led_ctrl(true);
     }
+
     return;
 }
