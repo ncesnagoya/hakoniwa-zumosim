@@ -15,6 +15,8 @@ int main(int argc, const char* argv[])
         std::cerr << "ERROR: " << "hako_asset_runner_init() error" << std::endl;
         return 1;
     }
+    zumosim_register_setup(apl_main_task_setup);
+    zumosim_register_reset(apl_main_task_setup);
     zumosim_register_task(apl_main_task_body);
     hako_asset_runner_register_callback(&zumosim_callbacks);
     while (true) {

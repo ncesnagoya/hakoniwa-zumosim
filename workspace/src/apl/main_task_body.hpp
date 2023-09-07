@@ -5,6 +5,7 @@
 extern "C" {
 #endif
 
+extern void apl_main_task_setup(void);
 extern void apl_main_task_body(void);
 
 #ifdef __cplusplus

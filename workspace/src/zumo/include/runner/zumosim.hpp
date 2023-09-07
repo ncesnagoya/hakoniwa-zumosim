@@ -9,6 +9,8 @@ extern "C" {
 
 extern hako_asset_runner_callback_t zumosim_callbacks;
 extern void zumosim_register_task(void (*task) (void));
+extern void zumosim_register_setup(void (*setup) (void));
+extern void zumosim_register_reset(void (*setup) (void));
 
 #ifdef __cplusplus
 }

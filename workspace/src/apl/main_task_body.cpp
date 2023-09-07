@@ -2,6 +2,12 @@
 #include "apl/zumosim_api.hpp"
 
 static bool led_status = false;
+
+void apl_main_task_setup(void)
+{
+    led_status = false;
+}
+
 #define TASK_CYCLE 100
 void apl_main_task_body(void)
 {

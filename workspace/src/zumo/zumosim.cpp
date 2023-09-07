@@ -4,7 +4,17 @@
 #include <iostream>
 
 static void (*zumosim_main_task_body) (void);
+static void (*zumosim_main_task_setup) (void);
+static void (*zumosim_main_task_reset) (void);
 
+void zumosim_register_reset(void (*reset) (void))
+{
+    zumosim_main_task_reset = reset;
+}
+void zumosim_register_setup(void (*setup) (void))
+{
+    zumosim_main_task_setup = setup;
+}
 void zumosim_register_task(void (*task) (void))
 {
     zumosim_main_task_body = task;
@@ -16,6 +26,9 @@ static void zumosim_setup(void)
     std::cout << "INFO: ZUMOSIM SETUP" << std::endl;
     zumosim_sensor_init();
     zumosim_actuator_init();
+    if (zumosim_main_task_setup != NULL) {
+        zumosim_main_task_setup();
+    }
 }
 static void zumosim_do_task(void)
 {
@@ -32,6 +45,11 @@ static void zumosim_do_task(void)
 static void zumosim_reset(void)
 {
     std::cout << "INFO: ZUMOSIM RESET" << std::endl;
+    zumosim_sensor_init();
+    zumosim_actuator_init();
+    if (zumosim_main_task_reset != NULL) {
+        zumosim_main_task_reset();
+    }
 }
 
 
