@@ -76,4 +76,4 @@ RUN bash install.bash
 RUN cp /usr/local/bin/hakoniwa/hako-master  /usr/local/bin/hakoniwa/hakoniwa-conductor 
 WORKDIR /root/workspace
 
-#CMD [ "/root/workspace/run.bash" ]
+CMD [ "/root/workspace/run.bash" ]

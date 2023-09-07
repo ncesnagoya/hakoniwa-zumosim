@@ -60,4 +60,4 @@ RUN cp cmake-build/core/sample/base-procs/hako-cmd/hako-cmd /usr/local/bin/hakon
 RUN mkdir /root/workspace
 WORKDIR /root/workspace
 
-#CMD [ "/root/workspace/build.bash" ]
+CMD [ "/root/workspace/build.bash" ]
