@@ -15,7 +15,7 @@
 sudo chown <owner> /var/run.docker.sock
 ```
 
-<owner> は、当該コマンド実行ユーザ名です。
+`<owner>` は、当該コマンド実行ユーザ名です。
 
 ```
 sudo service docker start
@@ -29,7 +29,7 @@ sudo service docker start
 % bash docker/build.bash <aplname>
 ```
 
-<aplname> は、ビルド対象とするアプリケーション名です。
+`<aplname>` は、ビルド対象とするアプリケーション名です。
 
 TODO: <aplname> に対応するアプリケーションをビルド環境にどうやって取り込むか要検討
 
