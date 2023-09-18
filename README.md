@@ -1,53 +1,71 @@
 # hakoniwa-zumosim
 
+## 前提とする環境
+
+* OS
+  * Windows 10/11 WSL2 Ubuntu 22.04.1 LTS
+* Docker
+  * WLS2/Ubuntu 上で Docker Engine がインストールされていること
+
+## 事前準備
+
+以下のコマンドを実行して、docker サービスを起動してください。
+
+```
+sudo chown <owner> /var/run.docker.sock
+```
+
+<owner> は、当該コマンド実行ユーザ名です。
+
+```
+sudo service docker start
+```
 
 ## ビルド方法
+
+アプリケーションは以下の手順でビルドします。
 
 ```
 % bash docker/build.bash <aplname>
 ```
 
-現時点では、この後、以下のコマンドを実行する必要があります。
+<aplname> は、ビルド対象とするアプリケーション名です。
 
-```
-# bash clean.bash ; bash build.bash 
-```
+TODO: <aplname> に対応するアプリケーションをビルド環境にどうやって取り込むか要検討
 
 ## 箱庭起動方法
+
+以下のコマンドを実行することで、箱庭を起動できます。
+
+補足：アプリケーションのシミュレーション実行開始のトリガは、Unity側で行います。
 
 ```
 % bash docker/run.bash 
 ```
 
-現時点では、この後、以下のコマンドを実行する必要があります。
-
-```
-# bash run.bash
-```
-
 成功するとこなります。
 
 ```
+x86_64
+wsl2
 INFO: ACTIVATING HAKO-CONDUCTOR
-OPEN RECIEVER UDP PORT=127.0.0.1:54001
-OPEN SENDER UDP PORT=127.0.0.1:54002
+OPEN RECIEVER UDP PORT=172.25.195.216:54001
+OPEN SENDER UDP PORT=172.25.195.216:54002
 delta_msec = 20
 max_delay_msec = 100
-INFO: shmget() key=255 size=1129352 
-Server Start: 127.0.0.1:50051
+INFO: shmget() key=255 size=1129352
+Server Start: 172.25.195.216:50051
 INFO: ACTIVATING ZUMOSIM-RUNNER
 asset_name = zumosim-runner
 config path = ./runtime/custom.json
 delta_time_msec = 20
-INFO: shmget() key=255 size=1129352 
-Robot: EV3TrainModelWithBaggage, PduWriter: EV3TrainModelWithBaggage_ev3_sensor
-channel_id: 1 pdu_size: 248
-INFO: EV3TrainModelWithBaggage create_lchannel: logical_id=1 real_id=0 size=248
-Robot: EV3CrossingGateModel, PduWriter: EV3CrossingGateModel_ev3_sensor
-channel_id: 1 pdu_size: 248
-INFO: EV3CrossingGateModel create_lchannel: logical_id=1 real_id=1 size=248
-WAIT START
+INFO: shmget() key=255 size=1129352
+Robot: ZumoRoboModel, PduWriter: ZumoRoboModel_actuator
+channel_id: 1 pdu_size: 24
+INFO: ZumoRoboModel create_lchannel: logical_id=1 real_id=0 size=24
 ```
+
+終了する場合は、`CTRL+C` を実行してください。
 
 ## docker image 保存とロード方法
 
