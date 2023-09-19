@@ -111,4 +111,7 @@ REPOSITORY                            TAG       IMAGE ID       CREATED          
 ncesnagoya/hakoniwa-suzmosim-run      v1.0.0    81fe7a69d1f8   32 minutes ago   3.72GB
 ```
 
+## 設計情報
+
+![image](https://github.com/ncesnagoya/hakoniwa-zumosim/assets/164193/fe48ae0a-1c5c-41ab-8a53-7e9bdd714138)
 
