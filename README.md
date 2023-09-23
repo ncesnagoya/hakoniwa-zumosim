@@ -12,7 +12,7 @@
 以下のコマンドを実行して、docker サービスを起動してください。
 
 ```
-sudo chown <owner> /var/run.docker.sock
+sudo chown <owner> /var/run/docker.sock
 ```
 
 `<owner>` は、当該コマンド実行ユーザ名です。
