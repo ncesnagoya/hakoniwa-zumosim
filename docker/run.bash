@@ -27,7 +27,7 @@ if [ ${OS_TYPE} = "wsl2" ]
 then
 	export RESOLV_IPADDR=`cat /etc/resolv.conf  | grep nameserver | awk '{print $NF}'`
 	NETWORK_INTERFACE=$(route | grep '^default' | grep -o '[^ ]*$' | tr -d '\n')
-	CORE_IPADDR=$(ifconfig "${NETWORK_INTERFACE}" | grep netmask | awk '{print $2}')
+	CORE_IPADDR=$(ip addr | grep inet | grep  "${NETWORK_INTERFACE}"  | awk '{print $2}' | awk -F/ '{print $1}')
 elif [ ${OS_TYPE} = "Mac" ]
 then
 	CORE_IPADDR="127.0.0.1"
