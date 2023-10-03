@@ -17,6 +17,7 @@ add_library(
 
 target_include_directories(
     zumoapl
+    PRIVATE ${ZUMO_INTERFACE_DIR}
     PRIVATE /usr/local/include
     PRIVATE /mingw64/include
     PRIVATE ${HAKO_APL_SOURCE_DIR}

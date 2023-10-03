@@ -24,6 +24,7 @@ add_library(
 
 target_include_directories(
     zumosim
+    PRIVATE ${ZUMO_INTERFACE_DIR}
     PRIVATE /usr/local/include
     PRIVATE /mingw64/include
     PRIVATE ${HAKO_ZUMO_SOURCE_DIR}/actuator

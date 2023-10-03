@@ -1,6 +1,8 @@
 #ifndef _ZUMOSIM_API_HPP_
 #define _ZUMOSIM_API_HPP_
 
+#include "IZumoShield.hpp"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

@@ -23,6 +23,7 @@ then
     docker run \
         --platform linux/amd64 \
         -v ${HOST_WORKDIR}:${DOCKER_WORKDIR} \
+        -v ${HOST_ZUMO_INFDIR}:${DOCKER_ZUMO_INFDIR} \
         -it --rm \
         --net host \
         -e APP_NAME=${APP_NAME} \
@@ -30,6 +31,7 @@ then
 else
     docker run \
         -v ${HOST_WORKDIR}:${DOCKER_WORKDIR} \
+        -v ${HOST_ZUMO_INFDIR}:${DOCKER_ZUMO_INFDIR} \
         -it --rm \
         --net host \
         -e APP_NAME=${APP_NAME} \
