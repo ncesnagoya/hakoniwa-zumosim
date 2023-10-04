@@ -54,4 +54,19 @@ class IZumoReflectanceSensorArray
 	virtual unsigned int value(int i) = 0;
 };
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void zumo_delay(unsigned int delay_msec);
+
+extern IZumoLED& zumo_get_led();
+extern IZumoCompass& zumo_get_compass();
+extern IZumoMotors& zumo_get_motors();
+extern IZumoReflectanceSensorArray& zumo_get_reflectance_sensor_array();
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif /* _IZUMO_SHILED_HPP_ */

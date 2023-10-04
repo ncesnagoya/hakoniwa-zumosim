@@ -62,7 +62,7 @@ static void zumosim_reset(void)
     }
 }
 
-bool zumosim_delay(unsigned int delay_msec)
+static bool zumosim_delay(unsigned int delay_msec)
 {
     unsigned int delay_step = (delay_msec + zumosim_asset_delta_time_msec - 1) / zumosim_asset_delta_time_msec;
     //std::cout << "delay_step = " << delay_step << std::endl;
@@ -73,6 +73,31 @@ bool zumosim_delay(unsigned int delay_msec)
     return ret;
 }
 
+void zumo_delay(unsigned int delay_msec)
+{
+    zumosim_delay(delay_msec);
+}
+static ZumoSimLED zumosim_led;
+static ZumoSimCompass zumosim_compass;
+static ZumoSimMotors zumosim_motors;
+static ZumoSimReflectanceSensorArray zumosim_reflectance_sensor_array;
+IZumoLED& zumo_get_led()
+{
+    return zumosim_led;
+}
+
+IZumoCompass& zumo_get_compass()
+{
+    return zumosim_compass;
+}
+IZumoMotors& zumo_get_motors()
+{
+    return zumosim_motors;
+}
+IZumoReflectanceSensorArray& zumo_get_reflectance_sensor_array()
+{
+    return zumosim_reflectance_sensor_array;
+}
 
 hako_asset_runner_callback_t zumosim_callbacks = {
     zumosim_setup,   // setup
