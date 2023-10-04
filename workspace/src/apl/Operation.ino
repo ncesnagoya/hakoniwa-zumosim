@@ -35,9 +35,12 @@ void doOperation(void) {
     //buzzer.playNum(1);
     while (1) {
       led.on();
-      delay(1000);
-      led.off();
       bool ret = delay(1000);
+      if (ret == false) {
+        return;
+      }
+      led.off();
+      ret = delay(1000);
       if (ret == false) {
         return;
       }
