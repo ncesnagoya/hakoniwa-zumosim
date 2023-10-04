@@ -1,25 +1,18 @@
-#if 0
 #define MOTOR_SPEED 120
+#if 0
 #define TURN_SPEED  120
+#else
+#define TURN_SPEED  240
+#endif
 
 #define REFLECTANCE_THRESHOLD  400
 
 #define INTERSECTION_OSTIM     350
 
 #define ON_LINE(val)  ((val) > REFLECTANCE_THRESHOLD)
-#else
-#define MOTOR_SPEED 100
-#define TURN_SPEED  320
-
-#define REFLECTANCE_THRESHOLD  450
-
-#define INTERSECTION_OSTIM     350
-#endif
-#define ON_LINE(val)  (((val) != 0) && ((val) < REFLECTANCE_THRESHOLD))
 
 void doOperation(void) {
   char cmd;
-  std::cout << "ccommand=" << ccommand << std::endl;
   cmd = command[ccommand++];
 
   goStraight();

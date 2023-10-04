@@ -1,6 +1,14 @@
 #ifndef _IZUMO_SHILED_HPP_
 #define _IZUMO_SHILED_HPP_
 
+class IZumoSerial
+{
+  public:
+	virtual ~IZumoSerial() = default;
+	virtual void print(const char* msg) = 0;
+	virtual void println(const char* msg) = 0;
+};
+
 class IZumoLED
 {
   public:
@@ -64,6 +72,7 @@ extern IZumoLED& zumo_get_led();
 extern IZumoCompass& zumo_get_compass();
 extern IZumoMotors& zumo_get_motors();
 extern IZumoReflectanceSensorArray& zumo_get_reflectance_sensor_array();
+extern IZumoSerial& zumo_get_serial();
 
 #ifdef __cplusplus
 }

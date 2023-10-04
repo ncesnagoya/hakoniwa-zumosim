@@ -81,6 +81,7 @@ static ZumoSimLED zumosim_led;
 static ZumoSimCompass zumosim_compass;
 static ZumoSimMotors zumosim_motors;
 static ZumoSimReflectanceSensorArray zumosim_reflectance_sensor_array;
+static ZumoSimSerial zumosim_serial;
 IZumoLED& zumo_get_led()
 {
     return zumosim_led;
@@ -98,7 +99,10 @@ IZumoReflectanceSensorArray& zumo_get_reflectance_sensor_array()
 {
     return zumosim_reflectance_sensor_array;
 }
-
+IZumoSerial& zumo_get_serial()
+{
+    return zumosim_serial;
+}
 hako_asset_runner_callback_t zumosim_callbacks = {
     zumosim_setup,   // setup
     NULL,   // write_initial_pdu_data

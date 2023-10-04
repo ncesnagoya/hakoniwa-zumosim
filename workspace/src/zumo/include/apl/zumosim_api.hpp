@@ -3,6 +3,21 @@
 
 #include "IZumoShield.hpp"
 #include "zumosim_api_private.hpp"
+#include <iostream>
+
+class ZumoSimSerial : public IZumoSerial
+{
+  public:
+	virtual ~ZumoSimSerial() = default;
+	virtual void print(const char* msg)
+    {
+        std::cout << msg;
+    }
+	virtual void println(const char* msg)
+    {
+        std::cout << msg << std::endl;
+    }
+};
 
 class ZumoSimMotors : public IZumoMotors
 {
@@ -100,7 +115,7 @@ class ZumoSimReflectanceSensorArray : public IZumoReflectanceSensorArray
         }
         unsigned int values[ZUMOSIM_REFLECT_SENSOR_NUM];
         (void)zumosim_reflect_values(values);
-        return values[i-1];
+        return (1000 - values[i-1]);
     }
 };
 
