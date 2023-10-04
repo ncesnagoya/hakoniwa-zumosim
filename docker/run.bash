@@ -2,6 +2,13 @@
 
 source docker/run/env.bash
 
+if [ $# -ne 0 ]
+then
+	USE_TTY=
+else
+	USE_TTY="t"
+fi
+
 HAKONIWA_TOP_DIR=`pwd`
 IMAGE_NAME=`cat docker/run/image_name.txt`
 IMAGE_TAG=`cat docker/run/latest_version.txt`
@@ -40,7 +47,7 @@ then
 	docker run \
         -v ${HOST_WORKDIR}:${DOCKER_WORKDIR} \
         --platform linux/amd64 \
-		-it --rm \
+		-i${USE_TTY} --rm \
 		--net host \
 		-e CORE_IPADDR=${CORE_IPADDR} \
 		-e DELTA_MSEC=${DELTA_MSEC} \
@@ -52,7 +59,7 @@ then
 else
 	docker run \
         -v ${HOST_WORKDIR}:${DOCKER_WORKDIR} \
-		-it --rm \
+		-i${USE_TTY} --rm \
 		--net host \
 		-e CORE_IPADDR=${CORE_IPADDR} \
 		-e DELTA_MSEC=${DELTA_MSEC} \
