@@ -58,7 +58,7 @@ class IZumoReflectanceSensorArray
 extern "C" {
 #endif
 
-extern void zumo_delay(unsigned int delay_msec);
+extern bool zumo_delay(unsigned int delay_msec);
 
 extern IZumoLED& zumo_get_led();
 extern IZumoCompass& zumo_get_compass();

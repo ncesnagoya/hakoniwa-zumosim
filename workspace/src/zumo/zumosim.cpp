@@ -73,9 +73,9 @@ static bool zumosim_delay(unsigned int delay_msec)
     return ret;
 }
 
-void zumo_delay(unsigned int delay_msec)
+bool zumo_delay(unsigned int delay_msec)
 {
-    zumosim_delay(delay_msec);
+    return zumosim_delay(delay_msec);
 }
 static ZumoSimLED zumosim_led;
 static ZumoSimCompass zumosim_compass;

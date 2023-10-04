@@ -25,6 +25,7 @@ int main(int argc, const char* argv[])
         while (true) {
             apl_main_task_body();
             if (hako_asset_runner_step(1) == false) {
+                std::cout << "INFO: stopped simulation" << std::endl;
                 break;
             }
             //std::cout << "STEP" << std::endl;

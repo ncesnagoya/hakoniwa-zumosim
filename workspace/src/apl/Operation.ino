@@ -37,7 +37,10 @@ void doOperation(void) {
       led.on();
       delay(1000);
       led.off();
-      delay(1000);
+      bool ret = delay(1000);
+      if (ret == false) {
+        return;
+      }
     };
   }
   else if ((cmd == 'r') || (cmd == 'l')) {
