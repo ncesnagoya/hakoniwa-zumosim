@@ -1,20 +1,102 @@
-void doOperation(void)
-{
-    if (led_status) {
-        led_status = false;
-        led.off();
-        motors.setSpeeds(0, 5);
+#if 0
+#define MOTOR_SPEED 120
+#define TURN_SPEED  120
+
+#define REFLECTANCE_THRESHOLD  400
+
+#define INTERSECTION_OSTIM     350
+
+#define ON_LINE(val)  ((val) > REFLECTANCE_THRESHOLD)
+#else
+#define MOTOR_SPEED 80
+#define TURN_SPEED  260
+
+#define REFLECTANCE_THRESHOLD  450
+
+#define INTERSECTION_OSTIM     350
+#endif
+#define ON_LINE(val)  (((val) != 0) && ((val) < REFLECTANCE_THRESHOLD))
+
+void doOperation(void) {
+  char cmd;
+  std::cout << "ccommand=" << ccommand << std::endl;
+  cmd = command[ccommand++];
+
+  goStraight();
+
+  //交差点の中心まで進む
+  motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
+  delay(INTERSECTION_OSTIM);
+
+  //コマンド処理
+  if (cmd == '.') {
+    //停止コマンド
+    motors.setSpeeds(0, 0);
+    //buzzer.playNum(1);
+    while (1) {
+      led.on();
+      delay(1000);
+      led.off();
+      delay(1000);
+    };
+  }
+  else if ((cmd == 'r') || (cmd == 'l')) {
+    //左右へのターンコマンド
+    doTurn(cmd);
+  }
+}
+
+//直進
+void goStraight(void) {
+  motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
+
+  while (1) {
+    reflectances.update();
+
+    if (ON_LINE(reflectances.value(2))) {
+      motors.setSpeeds(-MOTOR_SPEED, MOTOR_SPEED);
+    } else if (ON_LINE(reflectances.value(5))) {
+      motors.setSpeeds(MOTOR_SPEED, -MOTOR_SPEED);
+    } else {
+      motors.setSpeeds(MOTOR_SPEED, MOTOR_SPEED);
     }
-    else {
-        led_status = true;
-        led.on();
-        motors.setSpeeds(1, 1);
+
+    //横線を見つけたら終了
+    if (ON_LINE(reflectances.value(1)) || ON_LINE(reflectances.value(6))) {
+      return;
     }
-    rf_sensor.update();
-    int i;
-    for (i = 0; i < ZUMOSIM_REFLECT_SENSOR_NUM; i++) {
-        std::cout << "[" << i << "] = " << rf_sensor.value(i) << std::endl;
-    }
-    std::cout << "compass: " << compass.averageHeading() << std::endl;
-    zumo_delay(5000);
+  }
+}
+
+//ターン
+void doTurn(char dir) {
+  int count = 0;
+  int pstate;
+
+  reflectances.update();
+
+  switch (dir) {
+    case 'r':
+      motors.setSpeeds(TURN_SPEED, -TURN_SPEED);
+      pstate = reflectances.value(5);
+      while (count < 2) {
+        reflectances.update();
+        if ((ON_LINE(reflectances.value(5)) ^ ON_LINE(pstate))) {
+          count++;
+        }
+        pstate = reflectances.value(5);
+      }
+      break;
+    case 'l':
+      motors.setSpeeds(-TURN_SPEED, TURN_SPEED);
+      pstate = reflectances.value(2);
+      while (count < 2) {
+        reflectances.update();
+        if ((ON_LINE(reflectances.value(2)) ^ ON_LINE(pstate))) {
+          count++;
+        }
+        pstate = reflectances.value(2);
+      }
+      break;
+  }
 }

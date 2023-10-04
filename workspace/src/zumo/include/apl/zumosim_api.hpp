@@ -92,15 +92,15 @@ class ZumoSimReflectanceSensorArray : public IZumoReflectanceSensorArray
     }
 	unsigned int value(int i)
     {
-        if (i < 0) {
+        if (i <= 0) {
             return -1;
         }
-        else if (i >= ZUMOSIM_REFLECT_SENSOR_NUM) {
+        else if (i > ZUMOSIM_REFLECT_SENSOR_NUM) {
             return -1;
         }
         unsigned int values[ZUMOSIM_REFLECT_SENSOR_NUM];
         (void)zumosim_reflect_values(values);
-        return values[i];
+        return values[i-1];
     }
 };
 
