@@ -1,5 +1,5 @@
 #!/bin/bash
-HAKO_UNITY_BIN_PATH="../hakoniwa-unity-zumo/plugin/ZumoApp"
+HAKO_UNITY_BIN_PATH="./ZumoApp"
 HAKO_UNITY_BIN=model.exe
 
 
