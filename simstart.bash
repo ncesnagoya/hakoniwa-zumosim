@@ -2,9 +2,15 @@
 HAKO_UNITY_BIN_PATH="../hakoniwa-unity-zumo/plugin/ZumoApp"
 HAKO_UNITY_BIN=model.exe
 
+
 if [ ! -d ${HAKO_UNITY_BIN_PATH} ]
 then
     echo "ERROR: can not found ${HAKO_UNITY_BIN_PATH}"
+    exit 1
+fi
+bash utils/set_core_config.bash ${HAKO_UNITY_BIN_PATH}
+if [ $? -ne 0 ]
+then
     exit 1
 fi
 
