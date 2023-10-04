@@ -8,8 +8,8 @@
 
 #define ON_LINE(val)  ((val) > REFLECTANCE_THRESHOLD)
 #else
-#define MOTOR_SPEED 80
-#define TURN_SPEED  260
+#define MOTOR_SPEED 100
+#define TURN_SPEED  320
 
 #define REFLECTANCE_THRESHOLD  450
 
