@@ -4,6 +4,6 @@
 
 void zumosim_led_ctrl(bool on)
 {
-    std::cout << "led " << on << std::endl;
+    //std::cout << "led " << on << std::endl;
     zumo_pdu_actuator.led.green = on;
 }

@@ -26,7 +26,16 @@ void goStraight(void);
 
 void apl_main_task_body(void)
 {
-    serial.println("apl_main_task_body: enter");
+    // skip initial sensor data
+    while (1) {
+        if (reflectances.value(1) == ZUMOSIM_REFLECT_MAX_VALUE) {
+            serial.println("INFO: wait for arriving sensor data for sim");
+            reflectances.update();
+        }
+        else {
+            break;
+        }
+    }
     doOperation();    
     return;
 }
