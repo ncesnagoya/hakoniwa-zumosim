@@ -2,6 +2,12 @@
 HAKO_UNITY_BIN_PATH="../hakoniwa-unity-zumo/plugin/ZumoApp"
 HAKO_UNITY_BIN=model.exe
 
+if [ ! -d ${HAKO_UNITY_BIN_PATH} ]
+then
+    echo "ERROR: can not found ${HAKO_UNITY_BIN_PATH}"
+    exit 1
+fi
+
 HAKO_RUN_PID=
 HAKO_UNITY_PID=
 DOCKER_ID=
