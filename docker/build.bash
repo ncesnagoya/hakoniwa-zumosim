@@ -9,6 +9,14 @@ APP_NAME=${1}
 
 source docker/dev/env.bash
 
+if [ ! -d workspace/src/apl/apps/${APP_NAME} ]
+then
+    echo "ERROR: can not found application name=${APP_NAME}  on workspace/src/apl/apps"
+    exit 1
+fi
+rm -f workspace/src/apl/*.ino
+cp workspace/src/apl/apps/${APP_NAME}/*.ino workspace/src/apl/
+
 HAKONIWA_TOP_DIR=`pwd`
 IMAGE_NAME=`cat docker/dev/image_name.txt`
 IMAGE_TAG=`cat docker/dev/latest_version.txt`
