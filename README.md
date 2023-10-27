@@ -74,7 +74,24 @@ course_1        course_2
 
 ```
 $ bash docker/run.bash
-TODO
+x86_64
+wsl2
+INFO: ACTIVATING HAKO-CONDUCTOR
+OPEN RECIEVER UDP PORT=172.25.195.216:54001
+OPEN SENDER UDP PORT=172.25.195.216:54002
+delta_msec = 20
+max_delay_msec = 1
+INFO: shmget() key=255 size=1129352 
+Server Start: 172.25.195.216:50051
+INFO: ACTIVATING ZUMOSIM-RUNNER
+asset_name = zumosim-runner
+config path = ./runtime/custom.json
+delta_time_msec = 20
+INFO: shmget() key=255 size=1129352 
+Robot: ZumoRoboModel, PduWriter: ZumoRoboModel_actuator
+channel_id: 1 pdu_size: 24
+INFO: ZumoRoboModel create_lchannel: logical_id=1 real_id=0 size=24
+WAIT START
 ```
 
 また、Unityアプリが下図のように起動します。
