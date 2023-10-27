@@ -9,7 +9,7 @@ project(hakoniwa-suzmosim
 
 enable_testing()
 
-set(ZUMO_INTERFACE_DIR "${PROJECT_SOURCE_DIR}/../zumo-interface")
+set(ZUMO_INTERFACE_DIR "${PROJECT_SOURCE_DIR}/../hakoniwa-zumoIf/include")
 
 set(HAKO_ZUMO_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/zumo")
 set(HAKO_APL_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/apl")
