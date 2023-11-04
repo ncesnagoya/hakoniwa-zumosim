@@ -1,7 +1,7 @@
 #!/bin/bash
 HAKO_UNITY_BIN_PATH="./ZumoApp"
 HAKO_UNITY_BIN=model.exe
-
+CURRENT_DIR=`pwd`
 
 if [ ! -d ${HAKO_UNITY_BIN_PATH} ]
 then
@@ -25,7 +25,7 @@ function signal_handler()
 }
 function kill_process()
 {
-    echo "trapped"
+    echo "INFO: STOPPING Simulation"
     if [ -z "$HAKO_RUN_PID" ]
     then
         exit 0
@@ -41,7 +41,6 @@ function kill_process()
         echo "KILLING: docker $DOCKER_ID"
         docker kill ${DOCKER_ID}
     fi
-    
     echo "KILLING: HAKO_RUN $HAKO_RUN_PID"
     kill -9 "$HAKO_RUN_PID" || echo "Failed to kill HAKO_RUN"
 
@@ -54,7 +53,7 @@ function kill_process()
         fi
         sleep 1
     done
-
+    echo "INFO: STOP DONE"
     exit 0
 }
 trap signal_handler SIGINT

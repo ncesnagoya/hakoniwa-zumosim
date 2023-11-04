@@ -22,6 +22,12 @@ then
     exit 1
 fi
 
+if [ ! -f third-party/mustache/mo ]
+then
+    echo "ERROR: can not find third-party/mustache/mo"
+    exit 1
+fi
+
 bash third-party/mustache/mo utils/template/core_config_json.mo > ${UNITY_BIN_PATH}/core_config.json
 
 exit 0
