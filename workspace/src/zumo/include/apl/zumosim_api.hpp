@@ -17,6 +17,10 @@ class ZumoSimSerial : public IZumoSerial
     {
         std::cout << msg << std::endl;
     }
+	virtual void println()
+    {
+        std::cout << std::endl;
+    }
 };
 
 class ZumoSimMotors : public IZumoMotors
