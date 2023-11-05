@@ -35,7 +35,7 @@ then
         -it --rm \
         --net host \
         -e APP_NAME=${APP_NAME} \
-        --name ${IMAGE_NAME}-instance ${DOCKER_IMAGE} 
+        --name ${IMAGE_NAME}-instance ${DOCKER_IMAGE} ${DOCKER_RUN_CMD}
 else
     docker run \
         -v ${HOST_WORKDIR}:${DOCKER_WORKDIR} \
@@ -43,6 +43,6 @@ else
         -it --rm \
         --net host \
         -e APP_NAME=${APP_NAME} \
-        --name ${IMAGE_NAME}-instance ${DOCKER_IMAGE} 
+        --name ${IMAGE_NAME}-instance ${DOCKER_IMAGE} ${DOCKER_RUN_CMD}
 fi
 
