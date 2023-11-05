@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd $(dirname $0)
+
 if [ ! -d cmake-build ]
 then
     mkdir cmake-build
