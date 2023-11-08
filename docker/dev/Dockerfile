@@ -57,7 +57,7 @@ ENV PYTHONPATH="/usr/local/lib/hakoniwa/py:$PYTHONPATH"
 RUN cp cmake-build/src/proxy/hako-proxy /usr/local/bin/hakoniwa
 RUN cp cmake-build/core/sample/base-procs/hako-cmd/hako-cmd /usr/local/bin/hakoniwa
 
-RUN mkdir /root/workspace
-WORKDIR /root/workspace
+# RUN mkdir /root/workspace
+# WORKDIR /root/workspace
 
-CMD [ "/root/workspace/build.bash" ]
+# CMD [ "build.bash" ]
