@@ -1,0 +1,22 @@
+{
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
+
+    // BASH IDEと BASH Debugのプラグインをインストールするとsimstartを起動できます。
+    //  https://marketplace.visualstudio.com/items?itemName=rogalmic.bash-debug
+    //  https://marketplace.visualstudio.com/items?itemName=mads-hartmann.bash-ide-vscode
+
+
+    
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "bashdb",
+            "request": "launch",
+            "name": "hakoniwa run",
+            "program": "simstart.bash",
+            "terminalKind": "integrated"
+        }
+    ]
+}
