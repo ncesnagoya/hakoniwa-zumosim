@@ -117,15 +117,15 @@ Unityアプリケーションの`START`ボタンをクリックしてくださ�
 ```
 % docker images
 REPOSITORY                            TAG       IMAGE ID       CREATED          SIZE
-ncesnagoya/hakoniwa-suzmosim-dev      v1.0.0    645e59a3440c   17 minutes ago   1.25GB
-ncesnagoya/hakoniwa-suzmosim-run      v1.0.0    81fe7a69d1f8   29 minutes ago   3.72GB
+ncesnagoya/hakoniwa-zumosim-dev      v1.0.0    645e59a3440c   17 minutes ago   1.25GB
+ncesnagoya/hakoniwa-zumosim-run      v1.0.0    81fe7a69d1f8   29 minutes ago   3.72GB
 ```
 
 ### 保存方法
-ここでは、`ncesnagoya/hakoniwa-suzmosim-run` を保存してみましょう。
+ここでは、`ncesnagoya/hakoniwa-zumosim-run` を保存してみましょう。
 
 ```
- docker save ncesnagoya/hakoniwa-suzmosim-run -o zumosim-run.tar
+ docker save ncesnagoya/hakoniwa-zumosim-run -o zumosim-run.tar
 ```
 
 `-o` オプションで、ファイル名を指定します。ファイルは tar ファイルで出力されますので、拡張子は `.tar` にします。
@@ -151,7 +151,7 @@ ls -lh
 ```
 % docker images
 REPOSITORY                            TAG       IMAGE ID       CREATED          SIZE
-ncesnagoya/hakoniwa-suzmosim-run      v1.0.0    81fe7a69d1f8   32 minutes ago   3.72GB
+ncesnagoya/hakoniwa-zumosim-run      v1.0.0    81fe7a69d1f8   32 minutes ago   3.72GB
 ```
 
 ## 設計情報

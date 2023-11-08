@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 as hakoniwa-suzmosim-run
+FROM ubuntu:20.04 as hakoniwa-zumosim-run
 
 ARG DEBIAN_FRONTEND=noninteractive
 

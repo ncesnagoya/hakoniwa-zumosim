@@ -16,7 +16,6 @@ fi
 
 HAKO_RUN_PID=
 HAKO_UNITY_PID=
-DOCKER_ID=
 IS_OCCURED_SIGEVENT="FALSE"
 function signal_handler()
 {
@@ -30,19 +29,13 @@ function kill_process()
     then
         exit 0
     fi
+    cd $CURRENT_DIR
+    bash docker/kill.bash
     if [ ! -z "$HAKO_UNITY_PID" ]
     then
         echo "KILLING: UNITY $HAKO_UNITY_PID"
         taskkill.exe  /IM ${HAKO_UNITY_BIN} /F
-        kill -9 $HAKO_UNITY_PID || echo "Failed to kill UNITY $HAKO_UNITY_PID"
     fi
-    if [ ! -z "$DOCKER_ID" ]
-    then
-        echo "KILLING: docker $DOCKER_ID"
-        docker kill ${DOCKER_ID}
-    fi
-    echo "KILLING: HAKO_RUN $HAKO_RUN_PID"
-    kill -9 "$HAKO_RUN_PID" || echo "Failed to kill HAKO_RUN"
 
     while [ 1 ]
     do
@@ -64,9 +57,6 @@ bash docker/run.bash no_tty &
 HAKO_RUN_PID=$!
 
 sleep 1
-
-DOCKER_ID=`docker ps | grep "ncesnagoya/hakoniwa-suzmosim-run" | awk '{print $1}'`
-
 
 cd ${HAKO_UNITY_BIN_PATH}
 ./${HAKO_UNITY_BIN} &
