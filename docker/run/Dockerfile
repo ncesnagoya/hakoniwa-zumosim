@@ -58,7 +58,7 @@ RUN pip3 install scipy
 
 ENV PYTHONPATH="/usr/local/lib/hakoniwa:$PYTHONPATH"
 WORKDIR /root
-RUN git clone --recursive https://github.com/toppers/hakoniwa-core-cpp-client.git
+RUN git clone -b v1.0.4 --recursive https://github.com/toppers/hakoniwa-core-cpp-client.git
 WORKDIR /root/hakoniwa-core-cpp-client
 RUN apt-get install -y python3-pip  libffi-dev python3-dev
 RUN bash build.bash
