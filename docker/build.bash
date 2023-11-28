@@ -1,21 +1,28 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]
+if [ $# -ne 0 -a $# -ne 1 ]
 then
-    echo "Usage: $0 <app>"
+    echo "Usage: $0 [<app>]"
     exit 1
 fi
-APP_NAME=${1}
+APP_NAME=
+if [ $# -eq 1 ]
+then
+    APP_NAME=${1}
+fi
 
 source docker/dev/env.bash
 
-if [ ! -d workspace/src/apl/apps/${APP_NAME} ]
+if [ ! -z ${APP_NAME} ]
 then
-    echo "ERROR: can not found application name=${APP_NAME}  on workspace/src/apl/apps"
-    exit 1
+    if [ ! -d workspace/src/apl/apps/${APP_NAME} ]
+    then
+        echo "ERROR: can not found application name=${APP_NAME}  on workspace/src/apl/apps"
+        exit 1
+    fi
+    rm -f workspace/src/apl/*.ino
+    cp workspace/src/apl/apps/${APP_NAME}/*.ino workspace/src/apl/
 fi
-rm -f workspace/src/apl/*.ino
-cp workspace/src/apl/apps/${APP_NAME}/*.ino workspace/src/apl/
 
 HAKONIWA_TOP_DIR=`pwd`
 IMAGE_NAME=`cat docker/dev/image_name.txt`
@@ -34,7 +41,6 @@ then
         -v ${HOST_ZUMO_INFDIR}:${DOCKER_ZUMO_INFDIR} \
         -it --rm \
         --net host \
-        -e APP_NAME=${APP_NAME} \
         --name ${IMAGE_NAME}-instance ${DOCKER_IMAGE} ${DOCKER_RUN_CMD}
 else
     docker run \
@@ -42,7 +48,6 @@ else
         -v ${HOST_ZUMO_INFDIR}:${DOCKER_ZUMO_INFDIR} \
         -it --rm \
         --net host \
-        -e APP_NAME=${APP_NAME} \
         --name ${IMAGE_NAME}-instance ${DOCKER_IMAGE} ${DOCKER_RUN_CMD}
 fi
 
