@@ -20,8 +20,9 @@ then
         echo "ERROR: can not found application name=${APP_NAME}  on workspace/src/apl/apps"
         exit 1
     fi
-    rm -f workspace/src/apl/*.ino
+    rm -f workspace/src/apl/*.ino workspace/src/apl/*.h
     cp workspace/src/apl/apps/${APP_NAME}/*.ino workspace/src/apl/
+    cp workspace/src/apl/apps/${APP_NAME}/*.h workspace/src/apl/
 fi
 
 HAKONIWA_TOP_DIR=`pwd`
