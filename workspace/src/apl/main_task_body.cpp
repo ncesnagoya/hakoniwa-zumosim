@@ -1,32 +1,38 @@
 #include "main_task_body.hpp"
 #include "apl/zumosim_api.hpp"
 
-static int ccommand = 0;
 static IZumoLED& led = zumo_get_led();
 static IZumoMotors& motors = zumo_get_motors();
 static IZumoReflectanceSensorArray& reflectances = zumo_get_reflectance_sensor_array();
 static IZumoCompass& compass = zumo_get_compass();
 static IZumoSerial& Serial = zumo_get_serial();
 
+int g_iStatus;			/* 状態遷移変数 */
+int g_iDoCmdNum;		/* g_cCommand[]のコマンドを先頭から順に取り出す添え字 */
+
+#define delay(arg) zumo_delay(arg)
+
+#include "common.h" 
+#include "Driver.ino"   /* Operation.inoより先にインクルードする必要がある */
+#include "Operation.ino"    
+
 void apl_main_task_setup(void)
 {
     Serial.println("EVENT RESET");
-    ccommand = 0;
+ 
+    g_iStatus = STATUS_INIT;
+    g_iDoCmdNum = 0;
+
     led = zumo_get_led();
     motors = zumo_get_motors();
     reflectances = zumo_get_reflectance_sensor_array();
     compass = zumo_get_compass();
+
+    g_iStatus = STATUS_COMMAND_INPUT;
+
+    getCommand();
+
 }
-static const char *command = "rflflr.";
-char g_cSeialSubs[100] = "frrDLF."; //テスト2　シリアル入力代替配列
-#define MAX_COMMAND  10   // 制御コマンドの入力可能数
-char g_cCommand[MAX_COMMAND]; //制御コマンドを記憶する配列
-
-void doTurn(char dir);
-void goStraight(void);
-#define delay(arg) zumo_delay(arg)
-
-#include "Operation.ino"
 
 void apl_main_task_body(void)
 {
