@@ -32,3 +32,6 @@ workspace/cmake-build/
 *.exe
 *.out
 *.app
+
+# App
+ZumoApp/
