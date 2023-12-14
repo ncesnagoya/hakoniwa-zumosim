@@ -8,7 +8,6 @@ static IZumoCompass& compass = zumo_get_compass();
 static IZumoSerial& Serial = zumo_get_serial();
 
 int g_iStatus;			/* 状態遷移変数 */
-int g_iDoCmdNum;		/* g_cCommand[]のコマンドを先頭から順に取り出す添え字 */
 
 #define delay(arg) zumo_delay(arg)
 
@@ -18,7 +17,7 @@ int g_iDoCmdNum;		/* g_cCommand[]のコマンドを先頭から順に取り出�
 
 void apl_main_task_setup(void)
 {
-    Serial.println("EVENT RESET");
+    SerialPrintIn("EVENT RESET");
  
     g_iStatus = STATUS_INIT;
     g_iDoCmdNum = 0;
@@ -39,7 +38,7 @@ void apl_main_task_body(void)
     // skip initial sensor data
     while (1) {
         if (reflectances.value(1) == ZUMOSIM_REFLECT_MAX_VALUE) {
-            Serial.println("INFO: wait for arriving sensor data for sim");
+            SerialPrintIn("INFO: wait for arriving sensor data for sim");
             reflectances.update();
         }
         else {
