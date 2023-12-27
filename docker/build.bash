@@ -23,6 +23,8 @@ then
     rm -f workspace/src/apl/*.ino workspace/src/apl/*.h
     cp workspace/src/apl/apps/${APP_NAME}/*.ino workspace/src/apl/
     cp workspace/src/apl/apps/${APP_NAME}/*.h workspace/src/apl/
+    cp workspace/src/apl/apps/${APP_NAME}/*.cpp workspace/src/apl/
+    cp workspace/src/apl/apps/${APP_NAME}/*.hpp workspace/src/apl/
 fi
 
 HAKONIWA_TOP_DIR=`pwd`
