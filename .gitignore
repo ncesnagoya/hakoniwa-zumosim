@@ -35,3 +35,4 @@ workspace/cmake-build/
 
 # App
 ZumoApp/
+RELEASE/
