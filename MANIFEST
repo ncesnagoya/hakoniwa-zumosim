@@ -1,5 +1,5 @@
 PACKAGE hakoniwa-zumosim
-VERSION 1.0.0
+VERSION 1.A.0
 
 MANIFEST
 README.md
@@ -47,6 +47,22 @@ workspace/src/apl/common.h
 workspace/src/apl/main_task_body.cpp
 workspace/src/apl/main_task_body.hpp
 
+workspace/src/apl/apps/c1_work1/common.h
+workspace/src/apl/apps/c1_work1/Driver.ino
+workspace/src/apl/apps/c1_work1/main_task_body.cpp
+workspace/src/apl/apps/c1_work1/Operation.ino
+workspace/src/apl/apps/c1_work2/common.h
+workspace/src/apl/apps/c1_work2/Driver.ino
+workspace/src/apl/apps/c1_work2/main_task_body.cpp
+workspace/src/apl/apps/c1_work2/Operation.ino
+workspace/src/apl/apps/c1_work3/common.h
+workspace/src/apl/apps/c1_work3/Driver.ino
+workspace/src/apl/apps/c1_work3/main_task_body.cpp
+workspace/src/apl/apps/c1_work3/Operation.ino
+workspace/src/apl/apps/c1_work4/common.h
+workspace/src/apl/apps/c1_work4/Driver.ino
+workspace/src/apl/apps/c1_work4/main_task_body.cpp
+workspace/src/apl/apps/c1_work4/Operation.ino
 workspace/src/apl/apps/course_1/Driver.ino
 workspace/src/apl/apps/course_1/Operation.ino
 workspace/src/apl/apps/course_1/common.h
