@@ -153,6 +153,12 @@ ls -lh
 REPOSITORY                            TAG       IMAGE ID       CREATED          SIZE
 ncesnagoya/hakoniwa-zumosim-run      v1.0.0    81fe7a69d1f8   32 minutes ago   3.72GB
 ```
+## docker image 作成方法
+
+```
+% bash docker/create-image.bash dev
+% bash docker/create-image.bash run
+```
 
 ## 設計情報
 
