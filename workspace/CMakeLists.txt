@@ -9,11 +9,8 @@ project(hakoniwa-zumosim
 
 enable_testing()
 
-set(ZUMO_INTERFACE_DIR "${PROJECT_SOURCE_DIR}/../hakoniwa-zumoIf/include")
-
 set(HAKO_ZUMO_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/zumo")
 set(HAKO_APL_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src/apl")
-message(STATUS "INF=" ${ZUMO_INTERFACE_DIR})
 if (DEFINED HAKO_CPP_SOURCE_DIR)
     message(STATUS "HAKO_CPP_SOURCE_DIR" ${HAKO_CPP_SOURCE_DIR})
 else()
