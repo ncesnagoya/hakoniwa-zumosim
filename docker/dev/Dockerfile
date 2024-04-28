@@ -33,10 +33,10 @@ ENV PATH ${PATH}:${CMAKE_INSTALL_DIR}/bin
 
 RUN apt-get update
 RUN apt-get install -y libc++-dev libc++abi-dev
-RUN apt-get install -y python3-pip  libffi-dev python3-dev
-RUN pip3 install numpy
-RUN pip3 install pyquaternion
-RUN pip3 install scipy
+# RUN apt-get install -y python3-pip  libffi-dev python3-dev
+# RUN pip3 install numpy
+# RUN pip3 install pyquaternion
+# RUN pip3 install scipy
 
 RUN mkdir /usr/local/lib/hakoniwa
 RUN mkdir /usr/local/bin/hakoniwa
