@@ -11,18 +11,22 @@ jobs:
     env:
       REPO: ${{ github.event.repository.name }}
       VERSION: ${{ github.ref_name }}
-
+    permissions:
+      contents: write # リリースノートの作成に必要なパーミッション
+       
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        submodules: true  # サブモジュールを含めてチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true  # サブモジュールを含めてチェックアウト
 
-    - name: Create archive
-      run: |
+      - name: Create archive
+        run: |
           zip -r ${REPO}-${VERSION}.zip . -x '*.git*'
   
-    - name: Upload Release Asset
-      run: |
-        gh release create "${VERSION}" --title "${VERSION}" --generate-notes
-        gh release upload "${VERSION}" "${REPO}-${VERSION}.zip"
+      - name: Upload Release Asset
+        run: |
+          gh release create "${VERSION}" --title "${VERSION}" --generate-notes
+          gh release upload "${VERSION}" "${REPO}-${VERSION}.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
