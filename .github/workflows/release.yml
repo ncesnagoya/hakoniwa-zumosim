@@ -1,0 +1,75 @@
+name: Create Release Archive
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      project_name: ${{ github.event.repository.name }}
+      tag_name: ${{ github.event.release.tag_name }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        submodules: true  # サブモジュールを含めてチェックアウト
+
+    - name: Create archive
+      run: |
+        zip -r ${project_name}-${tag_name}.zip . -x '*.git*'
+
+    - name: Generate release notes
+      id: generate_release_notes
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const { data: issues } = await github.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'closed',
+            labels: 'bug',
+            since: context.payload.release.created_at
+          });
+
+          const { data: pulls } = await github.pulls.list({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'closed',
+            sort: 'updated',
+            direction: 'desc'
+          });
+
+          const releaseNotes = `
+          ## リリースノート
+
+          ### 閉じられたIssue
+          ${issues.map(issue => `- ${issue.title} (#${issue.number})`).join('\n')}
+
+          ### マージされたPR
+          ${pulls.map(pr => `- ${pr.title} (#${pr.number})`).join('\n')}
+          `;
+
+          return releaseNotes;
+
+    - name: Update release with notes
+      uses: actions/github-script@v6
+      with:
+        script: |
+          await github.repos.updateRelease({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            release_id: context.payload.release.id,
+            body: `${steps.generate_release_notes.outputs.result}`
+          });
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ./${{ env.project_name }}-${{ env.tag_name }}.zip
+        asset_name: ${{ env.project_name }}-${{ env.tag_name }}.zip
+        asset_content_type: application/zip
