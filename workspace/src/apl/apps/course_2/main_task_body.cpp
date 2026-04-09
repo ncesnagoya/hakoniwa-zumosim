@@ -63,7 +63,9 @@ void apl_main_task_setup(void)
 void apl_main_task_body(void)
 {
 
-    doDrive();
+  doInput();          // 入力制御機能
+  doDrive();          // 走行制御機能
+  doOutput();         // 出力制御機能
 
     return;
 }

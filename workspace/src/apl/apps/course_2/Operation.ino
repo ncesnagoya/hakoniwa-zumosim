@@ -24,7 +24,11 @@ ZumoBuzzer buzzer;
 #endif /* SIMULATION_ENV == 0 */
 
 // 入力制御機能データ
+#if SIMULATION_ENV == 0
 char  g_cSwStatus = SWITCH_OFF;       // プッシュボタンスイッチ入力情報
+#else
+char  g_cSwStatus = SWITCH_ON;       // プッシュボタンスイッチ入力情報
+#endif /* SIMULATION_ENV == 0 */
 int   g_iSlopeDeg;                    // 坂道推定角度情報
 
 // 出力制御機能データ
@@ -81,6 +85,8 @@ void doDrive( void ) {
   static char cMode = ZUMO_MODE_WAIT;         // 動作モード
   static char cDriveState = DRIVE_ROAD_FLAT;  // 走行状態
   static int iSlopeDegPre;                    // 前回の坂道推定角度
+  
+  ReflectancesUpdate();	/* リフレクタセンサ値更新 */
 
   // モード変更処理
   if ( g_cSwStatus == SWITCH_ON ) {
