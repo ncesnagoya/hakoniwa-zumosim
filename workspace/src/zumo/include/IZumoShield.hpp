@@ -113,6 +113,7 @@ extern IZumoCompass& zumo_get_compass();
 extern IZumoMotors& zumo_get_motors();
 extern IZumoReflectanceSensorArray& zumo_get_reflectance_sensor_array();
 extern IZumoSerial& zumo_get_serial();
+extern IZumoGyro& zumo_get_gyro();
 
 #ifdef __cplusplus
 }
